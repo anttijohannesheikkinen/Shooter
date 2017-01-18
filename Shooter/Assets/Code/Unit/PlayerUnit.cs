@@ -13,6 +13,8 @@ namespace Shooter
             Balanced = 3
         }
 
+        public UnitType unitType;
+
         public override int ProjectileLayer
         {
             get { return LayerMask.NameToLayer("PlayerProjectile"); }
