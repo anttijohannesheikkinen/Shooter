@@ -50,7 +50,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4865170372773204}
   m_Layer: 8
-  m_Name: Weapon3 (1)
+  m_Name: Weapon5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,7 +114,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4896798907199690}
   m_Layer: 8
-  m_Name: Weapon3 (2)
+  m_Name: Weapon6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4455240693851870}
   m_Layer: 8
-  m_Name: Weapon3
+  m_Name: Weapon4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

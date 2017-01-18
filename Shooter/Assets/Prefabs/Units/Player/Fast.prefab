@@ -39,7 +39,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4356714125766566}
   m_Layer: 8
-  m_Name: Weapon (1)
+  m_Name: Weapon2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4523611914509900}
   m_Layer: 8
-  m_Name: Weapon (2)
+  m_Name: Weapon3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,7 +69,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4805200351509880}
   m_Layer: 8
-  m_Name: Weapon (3)
+  m_Name: Weapon4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,7 +99,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4122700033296600}
   m_Layer: 8
-  m_Name: Weapon
+  m_Name: Weapon1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
