@@ -19,5 +19,18 @@ namespace Shooter.Utility
 
             return component;
         }
+
+        public static void SetLayer (this GameObject gameObject, int layer, bool includeChildren = true)
+        {
+            gameObject.layer = layer;
+
+            if (includeChildren)
+            {
+                foreach (Transform transform in gameObject.transform.GetComponentsInChildren<Transform>())
+                {
+                    transform.gameObject.layer = layer;
+                }
+            }
+        }
     }
 }
