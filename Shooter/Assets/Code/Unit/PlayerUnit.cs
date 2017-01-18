@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Shooter
 {
-    public class PlayerUnit : UnitBase, IMover
+    public class PlayerUnit : UnitBase
     {
 
         // Use this for initialization
@@ -19,9 +17,5 @@ namespace Shooter
 
         }
 
-        public override void Move()
-        {
-
-        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Shooter.Utility;
 
 
 namespace Shooter
@@ -8,13 +9,11 @@ namespace Shooter
     public abstract class UnitBase : MonoBehaviour
     {
 
-        public static int UnitCounter { get; set; }
+        public IHealth Health { get; protected set; }
 
-        public virtual void Move()
+        protected virtual void Awake()
         {
-
+            Health = gameObject.GetOrAddComponent<Health>();
         }
-
-        public abstract void Shoot();
     }
 }

@@ -83,6 +83,8 @@ GameObject:
   - component: {fileID: 23807774284211104}
   - component: {fileID: 64257948391550704}
   - component: {fileID: 54848303525485254}
+  - component: {fileID: 114127335930343660}
+  - component: {fileID: 114615614989754146}
   m_Layer: 8
   m_Name: Balanced
   m_TagString: Untagged
@@ -255,3 +257,26 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300004, guid: 6c11e79470dad4b4bb66b279d2660007, type: 3}
+--- !u!114 &114127335930343660
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1522248608748632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b64fa30c510263040a58c28f20884030, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114615614989754146
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1522248608748632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d8af4f82b4c9bc40829802cdc162a51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 0
