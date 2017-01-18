@@ -10,12 +10,14 @@ namespace Shooter
     {
         #region Properties
         public IHealth Health { get; protected set; }
+        public IMover Mover { get; protected set; }
         #endregion
 
         #region Unity messages
         protected virtual void Awake()
         {
             Health = gameObject.GetOrAddComponent<Health>();
+            Mover = gameObject.GetOrAddComponent<Mover>();
         }
         #endregion
 
