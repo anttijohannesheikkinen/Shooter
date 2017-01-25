@@ -20,12 +20,18 @@ namespace Shooter
         private float _shootingForce;
         [SerializeField]
         private int _damage;
+        [SerializeField]
+        private ProjectileType _projectileType;
 
         private int _destroyerLayer;
 
         #endregion
 
+        public ProjectileType Type { get { return _projectileType; } }
+
         private Rigidbody _rigidbody;
+
+
 
         #region Unity Messages
 
@@ -55,12 +61,14 @@ namespace Shooter
             Destroy(gameObject);
         }
 
+
+        // This is used to clean projectiles up after hitting the proper triggers.
         protected void OnTriggerEnter (Collider other)
         {
             if (other.gameObject.layer == _destroyerLayer)
             {
 
-                // Move to pool.
+                // TODO: Move to pool.
                 Destroy(gameObject);
             }
         }

@@ -139,6 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shootingForce: 40
   _damage: 10
+  _projectileType: 1
 --- !u!136 &136104634301179222
 CapsuleCollider:
   m_ObjectHideFlags: 1

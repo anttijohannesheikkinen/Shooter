@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using ProjectileType = Shooter.Projectile.ProjectileType;
 using Shooter.Utility;
+using Shooter.Systems;
 
 
 namespace Shooter
@@ -9,8 +10,6 @@ namespace Shooter
     {
         [SerializeField]
         private ProjectileType _projectileType;
-        [SerializeField]
-        private Projectile _projectilePrefab;
 
         public void Shoot (int projectileLayer)
         {
@@ -25,9 +24,15 @@ namespace Shooter
 
         private Projectile GetProjectile ()
         {
-            Projectile projectile = Instantiate(_projectilePrefab, transform.position, transform.rotation);
+            Projectile projectilePrefab = Global.Instance.Prefabs.GetProjectilePrefabByType(_projectileType);
 
-            return projectile;
+            if (projectilePrefab != null)
+            {
+                Projectile projectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
+                return projectile;
+            }
+
+            return null;
         }
     }
 }
