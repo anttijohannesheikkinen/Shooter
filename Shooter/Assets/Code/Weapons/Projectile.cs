@@ -1,27 +1,58 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 
 namespace Shooter
 {
     public class Projectile : MonoBehaviour
     {
-        #region Unity fields
+
+        public enum ProjectileType
+        {
+            None = 0,
+            Laser = 1,
+            Explosive = 2,
+            Missile = 3
+        }
+
+        #region Unity Fields
 
         [SerializeField]
         private float _shootingForce;
         [SerializeField]
-        private float _damage;
+        private int _damage;
 
         #endregion
 
         private Rigidbody _rigidbody;
 
+        #region Unity Messages
+
         protected virtual void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
         }
+
+        protected void OnCollisionEnter (Collision collision)
+        {
+            // Collision, projectile hit something.
+
+            IHealth damageReceiver = collision.gameObject.GetComponentInChildren<IHealth>();
+
+            if (damageReceiver != null)
+            {
+                //Colliding object can take damage and is told to take damage.
+
+                damageReceiver.TakeDamage(_damage);
+            }
+
+            // TODO: Instantiate effect.
+            // TODO: Add sound effect.
+            // TODO: Move object to pool.
+
+            Destroy(gameObject);
+        }
+
+        #endregion
 
         public void Shoot (Vector3 direction)
         {
