@@ -28,8 +28,8 @@ namespace Shooter
 
         protected void Update ()
         {
-            float inputHorizontal = Input.GetAxisRaw("Horizontal");
-            float inputVertical = Input.GetAxisRaw("Vertical");
+            float inputHorizontal = Input.GetAxis("Horizontal");
+            float inputVertical = Input.GetAxis("Vertical");
 
             Vector3 input = new Vector3(inputHorizontal, 0, inputVertical);
 
