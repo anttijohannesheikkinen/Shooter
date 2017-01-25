@@ -25,5 +25,15 @@ namespace Shooter
             //TODO: Handle dying properly!
             gameObject.SetActive(false);
         }
+
+        protected void Update ()
+        {
+            float inputHorizontal = Input.GetAxisRaw("Horizontal");
+            float inputVertical = Input.GetAxisRaw("Vertical");
+
+            Vector3 input = new Vector3(inputHorizontal, 0, inputVertical);
+
+            Mover.MoveToDirection(input);
+        }
     }
 }

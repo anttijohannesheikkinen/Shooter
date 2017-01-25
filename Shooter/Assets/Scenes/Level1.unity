@@ -135,6 +135,11 @@ Prefab:
       propertyPath: unitType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114937327404776268, guid: 67d77faefe3c68445ace9a1ba36872a3,
+        type: 2}
+      propertyPath: _health
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 67d77faefe3c68445ace9a1ba36872a3, type: 2}
   m_IsPrefabParent: 0
