@@ -28,6 +28,20 @@ namespace Shooter
         }
 
         #endregion
+
+        public void Shoot(int projectileLayer)
+        {
+            // Has enough time passed since we shot previously?
+            if (_previouslyShot >= _shootingRate)
+            {
+                _previouslyShot = 0;
+
+                foreach (Weapon weapon in _weapons)
+                {
+                    weapon.Shoot(projectileLayer);
+                }
+            }
+        }
     }
 
 }

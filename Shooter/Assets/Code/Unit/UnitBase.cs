@@ -11,14 +11,15 @@ namespace Shooter
         #region Properties
         public IHealth Health { get; protected set; }
         public IMover Mover { get; protected set; }
+        public WeaponController Weapons { get; protected set; }
         #endregion
 
         #region Unity messages
         protected virtual void Awake()
         {
-            Health = gameObject.GetOrAddComponent<Health>();
-            Mover = gameObject.GetOrAddComponent<Mover>();
+            InitRequiredComponents();
         }
+
         #endregion
 
         #region Public interface
@@ -35,5 +36,12 @@ namespace Shooter
         protected abstract void Die();
         public abstract int ProjectileLayer { get; }
         #endregion
+
+        protected void InitRequiredComponents()
+        {
+            Health = gameObject.GetOrAddComponent<Health>();
+            Mover = gameObject.GetOrAddComponent<Mover>();
+            Weapons = GetComponentInChildren<WeaponController>();
+        }
     }
 }

@@ -21,6 +21,8 @@ namespace Shooter
         [SerializeField]
         private int _damage;
 
+        private int _destroyerLayer;
+
         #endregion
 
         private Rigidbody _rigidbody;
@@ -30,6 +32,7 @@ namespace Shooter
         protected virtual void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
+            _destroyerLayer = LayerMask.NameToLayer("Destroyer");
         }
 
         protected void OnCollisionEnter (Collision collision)
@@ -50,6 +53,16 @@ namespace Shooter
             // TODO: Move object to pool.
 
             Destroy(gameObject);
+        }
+
+        protected void OnTriggerEnter (Collider other)
+        {
+            if (other.gameObject.layer == _destroyerLayer)
+            {
+
+                // Move to pool.
+                Destroy(gameObject);
+            }
         }
 
         #endregion
