@@ -16,6 +16,8 @@ namespace Shooter
 
         #region Unity Fields
 
+        public Rigidbody Rigidbody { get; private set; }
+
         [SerializeField]
         private float _shootingForce;
         [SerializeField]
@@ -29,15 +31,13 @@ namespace Shooter
 
         public ProjectileType Type { get { return _projectileType; } }
 
-        private Rigidbody _rigidbody;
-
 
 
         #region Unity Messages
 
         protected virtual void Awake()
         {
-            _rigidbody = GetComponent<Rigidbody>();
+            Rigidbody = GetComponent<Rigidbody>();
             _destroyerLayer = LayerMask.NameToLayer("Destroyer");
         }
 
@@ -77,7 +77,7 @@ namespace Shooter
 
         public void Shoot (Vector3 direction)
         {
-            _rigidbody.AddForce(direction * _shootingForce, ForceMode.Impulse);
+            Rigidbody.AddForce(direction * _shootingForce, ForceMode.Impulse);
         }
     }
 

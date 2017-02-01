@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace Shooter.Systems
@@ -32,13 +31,70 @@ namespace Shooter.Systems
             }
         }
 
+
+        /// <summary>
+        /// Creates an item and adds it to pool.
+        /// </summary>
+        /// <param name="activate">Should the object be active or not.</param>
+        /// <returns></returns>
         private T AddItemToPool(bool activate = false)
         {
             T obj = Instantiate(_objectPrefab);
+
+            if (!activate)
+            {
+                Deactivate(obj);
+            }
+
             _pool.Add(obj);
             _isActive.Add(activate);
 
             return obj;
+        }
+
+        public T GetPooledObject()
+        {
+            T result = null;
+
+            for (int i = 0; i < _isActive.Count; i++)
+            {
+                if (!_isActive[i])
+                {
+                    result = _pool[i];
+                    _isActive[i] = true;
+                    break;
+                }
+            }
+
+            if (result == null && _shouldGrow)
+            {
+                result = AddItemToPool(true);
+            }
+
+            return result;
+        }
+
+
+        /// <summary>
+        /// Returns object back to pool, ie. sets its state to inactive.
+        /// </summary>
+        /// <param name="obj">The object which is returned to pool.</param>
+        public void ReturnObjectToPool (T obj)
+        {
+            for (int i = 0; i < _pool.Count; i++)
+            {
+                if (_pool[i] == obj)
+                {
+                    _isActive [i] = false;
+                    Deactivate(obj);
+                    break;
+                }
+            }
+        }
+
+        protected virtual void Deactivate(T item)
+        {
+            item.gameObject.SetActive(false);
         }
     }
 }
