@@ -34,6 +34,17 @@ namespace Shooter.Systems
             }
         }
 
+        [SerializeField]
+        private Pools _pools;
+
+        public Pools Pools
+        {
+            get
+            {
+                return _pools;
+            }
+        }
+
         protected void Awake ()
         {
             if (_instance == null)
@@ -64,6 +75,11 @@ namespace Shooter.Systems
             if (_prefabs == null)
             {
                 _prefabs = GetComponentInChildren<Prefabs>();
+            }
+
+            if (_pools == null)
+            {
+                _pools = GetComponentInChildren<Pools>();
             }
         }
     }

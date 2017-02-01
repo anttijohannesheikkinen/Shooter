@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Shooter.Interfaces;
 
 
 namespace Shooter
@@ -15,6 +16,8 @@ namespace Shooter
         }
 
         #region Unity Fields
+
+        private IShooter _shooter;
 
         public Rigidbody Rigidbody { get; private set; }
 
@@ -56,9 +59,8 @@ namespace Shooter
 
             // TODO: Instantiate effect.
             // TODO: Add sound effect.
-            // TODO: Move object to pool.
 
-            Destroy(gameObject);
+            _shooter.ProjectileHit(this);
         }
 
 
@@ -68,15 +70,15 @@ namespace Shooter
             if (other.gameObject.layer == _destroyerLayer)
             {
 
-                // TODO: Move to pool.
-                Destroy(gameObject);
+                _shooter.ProjectileHit(this);
             }
         }
 
         #endregion
 
-        public void Shoot (Vector3 direction)
+        public void Shoot (IShooter shooter, Vector3 direction)
         {
+            _shooter = shooter;
             Rigidbody.AddForce(direction * _shootingForce, ForceMode.Impulse);
         }
     }
