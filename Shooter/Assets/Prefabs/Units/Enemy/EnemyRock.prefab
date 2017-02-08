@@ -53,6 +53,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4251585268954086}
   - component: {fileID: 135426541117348456}
+  - component: {fileID: 114660060337184162}
+  - component: {fileID: 114861872600861356}
+  - component: {fileID: 114915851893697622}
   m_Layer: 9
   m_Name: EnemyRock
   m_TagString: Untagged
@@ -82,7 +85,7 @@ Transform:
   m_GameObject: {fileID: 1758977510390642}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children:
   - {fileID: 4194076250340396}
   m_Father: {fileID: 0}
@@ -156,6 +159,41 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114660060337184162
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1758977510390642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a7cbc90263eea242be825383112f903, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114861872600861356
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1758977510390642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d8af4f82b4c9bc40829802cdc162a51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 10
+--- !u!114 &114915851893697622
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1758977510390642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76e9d5e1974ae774e93c387351aa0bb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 5
 --- !u!135 &135426541117348456
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -166,5 +204,5 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 20.45
+  m_Radius: 41.66
   m_Center: {x: -2.1, y: 7.03, z: 0}

@@ -11,6 +11,7 @@ namespace Shooter
 
         public void Init(params PlayerData[] players)
         {
+
             foreach (PlayerData playerData in players)
             {
                 PlayerUnit unitPrefab = Global.Instance.Prefabs.GetPlayerUnitByType(playerData.UnitType);
@@ -22,7 +23,7 @@ namespace Shooter
                     unit.transform.position = Vector3.zero;
                     unit.transform.rotation = Quaternion.identity;
                     unit.Init(playerData);
-
+                    Debug.Log(unit.transform.position);
                     _players.Add(playerData.Id, unit);
                 }
 

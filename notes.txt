@@ -10,3 +10,5 @@ https://discord.gg/Mzk8V
 kertaa UML-notaatiota
 
 Kyygames ja Reborn etsii harjoittelijoita
+
+uIntellisense vois olla ihan järkevä tai ReSharper Unity plugari

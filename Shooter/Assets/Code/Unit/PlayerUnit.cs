@@ -34,6 +34,7 @@ namespace Shooter
         {
             //TODO: Handle dying properly!
             gameObject.SetActive(false);
+            base.Die();
         }
 
         protected void Update ()

@@ -16,14 +16,16 @@ namespace Shooter
 
         protected override void Die()
         {
-            // Handle dying properly.
+            // TODO: Handle dying properly.
             gameObject.SetActive(false);
             EnemyUnits.EnemyDied(this);
+            base.Die();
         }
 
         public void Init (EnemyUnits enemyUnits)
         {
             EnemyUnits = enemyUnits;
         }
+
     }
 }
