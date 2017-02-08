@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Shooter.Configs;
 
 namespace Shooter
 {
@@ -10,7 +11,7 @@ namespace Shooter
         {
             get
             {
-                return LayerMask.NameToLayer("EnemyProjectile");
+                return LayerMask.NameToLayer(Config.EnemyProjectileLayername);
             }
         }
 

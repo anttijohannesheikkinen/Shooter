@@ -88,7 +88,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1709166005789310}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4781510042579304}
@@ -187,7 +187,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!64 &64351243079781644
 MeshCollider:
@@ -227,8 +227,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _projectileType: 1
-  _projectilePrefab: {fileID: 114863217694425002, guid: b34c9f07f54a71c4e842adbeda26bc46,
-    type: 2}
 --- !u!114 &114560171541950550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -252,7 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b64fa30c510263040a58c28f20884030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitType: 1
+  _unitType: 1
 --- !u!114 &114767301781891130
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -277,5 +275,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _projectileType: 1
-  _projectilePrefab: {fileID: 114863217694425002, guid: b34c9f07f54a71c4e842adbeda26bc46,
-    type: 2}

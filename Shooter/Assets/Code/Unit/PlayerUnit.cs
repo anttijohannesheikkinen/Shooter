@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using Shooter.Data;
+using Shooter.Configs;
 
 namespace Shooter
 {
@@ -22,7 +23,7 @@ namespace Shooter
 
         public override int ProjectileLayer
         {
-            get { return LayerMask.NameToLayer("PlayerProjectile"); }
+            get { return LayerMask.NameToLayer(Config.PlayerProjectileLayername); }
         }
 
         public void Init  (PlayerData playerData)
