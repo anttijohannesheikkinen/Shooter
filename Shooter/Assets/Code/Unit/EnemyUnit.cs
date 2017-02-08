@@ -1,16 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class EnemyUnit : MonoBehaviour {
+namespace Shooter
+{
+    public class EnemyUnit : UnitBase
+    {
+        public EnemyUnits EnemyUnits { get; private set; }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        public override int ProjectileLayer
+        {
+            get
+            {
+                return LayerMask.NameToLayer("EnemyProjectile");
+            }
+        }
+
+        protected override void Die()
+        {
+            // Handle dying properly.
+            gameObject.SetActive(false);
+            EnemyUnits.EnemyDied(this);
+        }
+
+        public void Init (EnemyUnits enemyUnits)
+        {
+            EnemyUnits = enemyUnits;
+        }
+    }
 }

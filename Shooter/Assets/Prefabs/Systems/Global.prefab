@@ -141,8 +141,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c99369df376afe4ab476baa9343b9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectilePrefabs:
-  - {fileID: 114863217694425002, guid: b34c9f07f54a71c4e842adbeda26bc46, type: 2}
+  _playerPrefabs:
+  - {fileID: 114762817448293206, guid: 014cfd08f9aa57e47a65b7038f2af2dc, type: 2}
+  - {fileID: 114127335930343660, guid: b3741728fecb063429a18cf281a3da29, type: 2}
+  - {fileID: 114285553919085988, guid: 67d77faefe3c68445ace9a1ba36872a3, type: 2}
 --- !u!114 &114448380672212272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -155,7 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefabs: {fileID: 114241118094613312}
-  _pools: {fileID: 0}
+  _pools: {fileID: 114721728517484010}
 --- !u!114 &114721728517484010
 MonoBehaviour:
   m_ObjectHideFlags: 1

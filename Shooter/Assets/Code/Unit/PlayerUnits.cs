@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Shooter.Data;
+using Shooter.Systems;
 
 namespace Shooter
 {
@@ -15,11 +13,26 @@ namespace Shooter
         {
             foreach (PlayerData playerData in players)
             {
-                // TOTO Get prefab by unit type
-                // Initialize unit
-                // Add player to dictionary
+                PlayerUnit unitPrefab = Global.Instance.Prefabs.GetPlayerUnitByType(playerData.UnitType);
+
+                if (unitPrefab != null)
+                {   
+                    // Initialize unit
+                    PlayerUnit unit = Instantiate(unitPrefab, transform);
+                    unit.transform.position = Vector3.zero;
+                    unit.transform.rotation = Quaternion.identity;
+                    unit.Init(playerData);
+
+                    _players.Add(playerData.Id, unit);
+                }
+
+                else
+                {
+                    Debug.Log("Unit prefab of the type" + playerData.UnitType + "could not be found.");
+                }
             }
         }
 
+        // Update player movement.
     }
 }

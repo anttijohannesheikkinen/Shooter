@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using ProjectileType = Shooter.Projectile.ProjectileType;
+using UnitType = Shooter.PlayerUnit.UnitType;
 
 namespace Shooter.Systems
 {
@@ -9,19 +9,22 @@ namespace Shooter.Systems
     {
 
         [SerializeField]
-        private List<Projectile> _projectilePrefabs = new List<Projectile>();
+        private PlayerUnit[] _playerPrefabs;
 
-        public Projectile GetProjectilePrefabByType (ProjectileType projectileType)
+        public PlayerUnit GetPlayerUnitByType (UnitType playerUnitType)
         {
-            foreach (Projectile projectile in _projectilePrefabs)
+            PlayerUnit result = null;
+
+            foreach (PlayerUnit playerUnit in _playerPrefabs)
             {
-                if (projectile.Type == projectileType)
+                if (playerUnit.Type == playerUnitType)
                 {
-                    return projectile;
+                    result = playerUnit;
+                    break;
                 }
             }
 
-            return null;
+            return result;
         }
 
     }

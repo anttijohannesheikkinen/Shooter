@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using Shooter.Data;
 
 namespace Shooter
 {
@@ -13,11 +14,20 @@ namespace Shooter
             Balanced = 3
         }
 
-        public UnitType unitType;
+        [SerializeField]
+        private UnitType _unitType;
+        public PlayerData Data { get; private set; }
+
+        public UnitType Type { get { return _unitType; } }
 
         public override int ProjectileLayer
         {
             get { return LayerMask.NameToLayer("PlayerProjectile"); }
+        }
+
+        public void Init  (PlayerData playerData)
+        {
+            Data = playerData;
         }
 
         protected override void Die()
