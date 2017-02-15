@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using SM=UnityEngine.SceneManagement;
+using SM = UnityEngine.SceneManagement;
 
 namespace Shooter.Systems.States
 {
@@ -17,12 +17,20 @@ namespace Shooter.Systems.States
             Transitions = new Dictionary<GameStateTransitionType, GameStateType>();
         }
 
-        
-        protected abstract void ChangeState (GameStateTransitionType transition, GameStateType targetState);
-
         public bool AddTransition (GameStateTransitionType transition, GameStateType targetState)
         {
-            throw new NotImplementedException();
+
+            if (transition == GameStateTransitionType.Error || targetState == GameStateType.Error
+                || Transitions.ContainsKey(transition))
+            {
+                return false;
+            }
+
+            else
+            {
+                Transitions.Add(transition, targetState);
+                return true;
+            }
         }
 
         public bool RemoveTransition (GameStateTransitionType transition)
@@ -40,6 +48,33 @@ namespace Shooter.Systems.States
             return GameStateType.Error;
         }
 
+        public virtual void StateActivated ()
+        {
+            if (SM.SceneManager.GetActiveScene().name != SceneName)
+            {
+                SM.SceneManager.sceneLoaded += HandleSceneLoaded;
+                Global.Instance.StartCoroutine(LoadScene());
+            }
+        }
 
+        public virtual void StateDeactivating ()
+        {
+            // TODO Notify stateDeactivating.
+        }
+
+        private void HandleSceneLoaded(SM.Scene scene, SM.LoadSceneMode loadMode)
+        {
+            if (scene == SM.SceneManager.GetSceneByName(SceneName))
+            {
+                SM.SceneManager.sceneLoaded -= HandleSceneLoaded;
+                //TODO Notify scene loaded
+            }
+        }
+
+        private IEnumerator LoadScene ()
+        {
+            yield return new WaitForSeconds(5.3f);
+            SM.SceneManager.LoadScene(SceneName);
+        }
     }
 }
