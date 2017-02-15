@@ -19,6 +19,7 @@ namespace Shooter.Systems
 
         public void QuitGame()
         {
+            Debug.Log("Quit game");
             Application.Quit();
         }
     }
