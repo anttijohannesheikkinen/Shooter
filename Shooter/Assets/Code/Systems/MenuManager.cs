@@ -6,8 +6,17 @@ namespace Shooter.Systems
 {
     public class MenuManager : SceneManager
     {
+        public override GameStateType StateType
+        {
+            get
+            {
+                return GameStateType.MenuState;
+            }
+        }
+
         public void StartGame()
         {
+            Global.Instance.GameManager.PerformTransition(GameStateTransitionType.MenuToInGame);
             Debug.Log("Start game");
         }
 

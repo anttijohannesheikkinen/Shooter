@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Shooter.Utility;
 
 namespace Shooter.Systems
 {
@@ -45,6 +45,8 @@ namespace Shooter.Systems
             }
         }
 
+        public GameManager GameManager { get; private set; }
+
         protected void Awake ()
         {
             if (_instance == null)
@@ -81,6 +83,9 @@ namespace Shooter.Systems
             {
                 _pools = GetComponentInChildren<Pools>();
             }
+
+            GameManager = gameObject.GetOrAddComponent<GameManager>();
+            GameManager.Init();
         }
     }
 }

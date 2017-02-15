@@ -59,7 +59,8 @@ namespace Shooter.Systems.States
 
         public virtual void StateDeactivating ()
         {
-            // TODO Notify stateDeactivating.
+            //Notify state deactivating.
+            Global.Instance.GameManager.RaiseGameStateChangingEvent(State);
         }
 
         private void HandleSceneLoaded(SM.Scene scene, SM.LoadSceneMode loadMode)
@@ -67,7 +68,9 @@ namespace Shooter.Systems.States
             if (scene == SM.SceneManager.GetSceneByName(SceneName))
             {
                 SM.SceneManager.sceneLoaded -= HandleSceneLoaded;
-                //TODO Notify scene loaded
+
+                //Notify scene loaded
+                Global.Instance.GameManager.RaiseGameStateChangedEvent(State);
             }
         }
 

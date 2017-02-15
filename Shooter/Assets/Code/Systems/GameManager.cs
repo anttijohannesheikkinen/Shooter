@@ -116,7 +116,7 @@ namespace Shooter.Systems
             return false;
         }
 
-        public void RaiseStateChangingEvent (GameStateType gameStateType)
+        public void RaiseGameStateChangingEvent (GameStateType gameStateType)
         {
             if (GameStateChanging != null)
             {
@@ -124,7 +124,7 @@ namespace Shooter.Systems
             }
         }
 
-        public void RaisedGameStateChangedEvent (GameStateType gameStateType)
+        public void RaiseGameStateChangedEvent (GameStateType gameStateType)
         {
             if (GameStateChanged != null)
             {

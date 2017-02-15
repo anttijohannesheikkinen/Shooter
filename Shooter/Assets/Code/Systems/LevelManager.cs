@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Shooter.Data;
-
+using System;
 
 namespace Shooter.Systems
 {
@@ -11,6 +11,14 @@ namespace Shooter.Systems
         // TODO: Add reference to InputManager here.
         public PlayerUnits PlayerUnits { get; private set; }
         public EnemyUnits EnemyUnits { get; private set; }
+
+        public override GameStateType StateType
+        {
+            get
+            {
+                return GameStateType.InGameState;
+            }
+        }
 
         protected void Awake ()
         {
