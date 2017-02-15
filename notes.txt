@@ -12,3 +12,10 @@ kertaa UML-notaatiota
 Kyygames ja Reborn etsii harjoittelijoita
 
 uIntellisense vois olla ihan järkevä tai ReSharper Unity plugari
+
+
+
+
+jäsenmuuttujien (periytetyimmästä kantaluokkaan) ja konstruktorien (kantaluokasta periytyneimpään) suoritusjärjestys!
+
+-Älä kutsu virtuaalisia metodeja konstruktoreissa! Suoritusjärjestys menee todennäköisesti vituilleen.
