@@ -1,4 +1,5 @@
 ﻿using System;
+using Shooter.Configs;
 
 namespace Shooter.Data
 {
@@ -17,6 +18,10 @@ namespace Shooter.Data
         public PlayerId Id;
         public PlayerUnit.UnitType UnitType;
         public int Lives;
+
+        public ControllerAxis HorizontalAxis;
+        public ControllerAxis VerticalAxis;
+        public ShootButton ShootBtn;
 
         //TODO: ControllerType
     }

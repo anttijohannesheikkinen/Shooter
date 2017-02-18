@@ -7,10 +7,12 @@ namespace Shooter
 {
     public class PlayerUnits : MonoBehaviour
     {
-        private Dictionary<PlayerData.PlayerId, PlayerUnit> _players = new Dictionary<PlayerData.PlayerId, PlayerUnit>();
+        public Dictionary<PlayerData.PlayerId, PlayerUnit> Players { get; private set; }
 
         public void Init(params PlayerData[] players)
         {
+
+            Players = new Dictionary<PlayerData.PlayerId, PlayerUnit>();
 
             foreach (PlayerData playerData in players)
             {
@@ -26,7 +28,7 @@ namespace Shooter
 
                     Debug.Log(unit.transform.position);
 
-                    _players.Add(playerData.Id, unit);
+                    Players.Add(playerData.Id, unit);
                 }
 
                 else
@@ -35,7 +37,5 @@ namespace Shooter
                 }
             }
         }
-
-        // Update player movement.
     }
 }
