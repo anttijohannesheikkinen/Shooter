@@ -14,6 +14,10 @@ namespace Shooter
 
             Players = new Dictionary<PlayerData.PlayerId, PlayerUnit>();
 
+            //We don't want to spawn all the players in the same position.
+            //TODO: Proper spawning positions.
+            float startPositionX = -7.5f;
+
             foreach (PlayerData playerData in players)
             {
                 PlayerUnit unitPrefab = Global.Instance.Prefabs.GetPlayerUnitByType(playerData.UnitType);
@@ -22,13 +26,15 @@ namespace Shooter
                 {   
                     // Initialize unit
                     PlayerUnit unit = Instantiate(unitPrefab, transform);
-                    unit.transform.position = Vector3.zero;
+                    unit.transform.position = new Vector3 (startPositionX, 0, -3.0f);
                     unit.transform.rotation = Quaternion.identity;
                     unit.Init(playerData);
 
                     Debug.Log(unit.transform.position);
 
                     Players.Add(playerData.Id, unit);
+
+                    startPositionX += 5.0f;
                 }
 
                 else

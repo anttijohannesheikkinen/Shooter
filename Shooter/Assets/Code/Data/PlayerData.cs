@@ -15,10 +15,19 @@ namespace Shooter.Data
             Player4 = 4
         }
 
+        public enum ControllerType
+        {
+            None = 0,
+            KeyArrows = 1,
+            KeyWASD = 2,
+            Pad = 3
+        }
+
         public PlayerId Id;
         public PlayerUnit.UnitType UnitType;
         public int Lives;
 
+        public ControllerType ControlType;
         public ControllerAxis HorizontalAxis;
         public ControllerAxis VerticalAxis;
         public ShootButton ShootBtn;

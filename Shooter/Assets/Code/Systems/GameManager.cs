@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Shooter.Systems.States;
+using Shooter.Data;
 
 namespace Shooter.Systems
 {
@@ -146,6 +147,54 @@ namespace Shooter.Systems
             }
 
             return state;
+        }
+
+        #endregion
+
+        #region PlayerData Retrieval and Creation
+
+        public PlayerData[] GetPlayers ()
+        {
+            return CreatePlayers();
+        }
+
+        private PlayerData[] CreatePlayers()
+        {
+            PlayerData[] players = new PlayerData[4];
+
+            players[0] = new PlayerData()
+            {
+                Id = PlayerData.PlayerId.Player1,
+                UnitType = PlayerUnit.UnitType.Balanced,
+                Lives = 3,
+                ControlType = PlayerData.ControllerType.KeyArrows
+            };
+
+            players[1] = new PlayerData()
+            {
+                Id = PlayerData.PlayerId.Player2,
+                UnitType = PlayerUnit.UnitType.Heavy,
+                Lives = 3,
+                ControlType = PlayerData.ControllerType.KeyWASD
+            };
+
+            players[2] = new PlayerData()
+            {
+                Id = PlayerData.PlayerId.Player3,
+                UnitType = PlayerUnit.UnitType.Fast,
+                Lives = 3,
+                ControlType = PlayerData.ControllerType.Pad
+            };
+
+            players[3] = new PlayerData()
+            {
+                Id = PlayerData.PlayerId.Player4,
+                UnitType = PlayerUnit.UnitType.Balanced,
+                Lives = 3,
+                ControlType = PlayerData.ControllerType.Pad
+            };
+
+            return players;
         }
 
         #endregion

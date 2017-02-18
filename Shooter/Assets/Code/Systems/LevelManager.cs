@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Shooter.Data;
-using Shooter.InputManager;
 using Shooter.Configs;
 
 namespace Shooter.Systems
@@ -32,63 +29,16 @@ namespace Shooter.Systems
         {
             PlayerUnits = GetComponentInChildren<PlayerUnits>();
             EnemyUnits = GetComponentInChildren<EnemyUnits>();
-            InputManager = GetComponentInChildren<InputManager.InputManager>();
+            InputManager = GameObject.FindObjectOfType<InputManager.InputManager>();
 
             CheckForNulls();
-
             EnemyUnits.Init();
 
-            // TODO : get Player data from GameManager (new data or saved data).
-            PlayerData[] players = CreatePlayers();
-
+            //Initialize InputManager with proper info of current player data.
+            //Tyhmä kierto tätä kautta IMO. Kai. Voisi tehdä järkevämminkin ehkä.
+            PlayerData[] players = Global.Instance.GameManager.GetPlayers();
             PlayerUnits.Init(players);
             InputManager.Init(PlayerUnits);
-        }
-
-        private static PlayerData[] CreatePlayers()
-        {
-            PlayerData[] players = new PlayerData[4];
-
-            players[0] = new PlayerData()
-            {
-                Id = PlayerData.PlayerId.Player1,
-                UnitType = PlayerUnit.UnitType.Balanced,
-                Lives = 3,
-                HorizontalAxis = ControllerAxis.HorizontalKey1,
-                VerticalAxis = ControllerAxis.VerticalKey1,
-                ShootBtn = ShootButton.ShootKey1
-            };
-
-            players[1] = new PlayerData()
-            {
-                Id = PlayerData.PlayerId.Player2,
-                UnitType = PlayerUnit.UnitType.Heavy,
-                Lives = 3,
-                HorizontalAxis = ControllerAxis.HorizontalKey2,
-                VerticalAxis = ControllerAxis.VerticalKey2,
-                ShootBtn = ShootButton.ShootKey2
-            };
-
-            players[2] = new PlayerData()
-            {
-                Id = PlayerData.PlayerId.Player3,
-                UnitType = PlayerUnit.UnitType.Fast,
-                Lives = 3,
-                HorizontalAxis = ControllerAxis.HorizontalJoy1,
-                VerticalAxis = ControllerAxis.VerticalJoy1,
-                ShootBtn = ShootButton.ShootJoy1
-            };
-
-            players[3] = new PlayerData()
-            {
-                Id = PlayerData.PlayerId.Player4,
-                UnitType = PlayerUnit.UnitType.Balanced,
-                Lives = 3,
-                HorizontalAxis = ControllerAxis.HorizontalJoy2,
-                VerticalAxis = ControllerAxis.VerticalJoy2,
-                ShootBtn = ShootButton.ShootJoy2
-            };
-            return players;
         }
 
         private void CheckForNulls()
