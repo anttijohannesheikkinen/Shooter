@@ -7,9 +7,14 @@ namespace Shooter.InputManagement {
     public class InputManager : MonoBehaviour
     {
 
+        #region Fields
+
         private Dictionary<PlayerData.PlayerId, PlayerUnit> _players;
         private int _assignedJoypads;
 
+        #endregion
+
+        #region Initialization
         public void Init (PlayerUnits playerUnits)
         {
             _players = playerUnits.Players;
@@ -54,8 +59,6 @@ namespace Shooter.InputManagement {
                     _assignedJoypads++;
 
                     Debug.Log("Assigned pad 1.");
-
-
                 }
 
                 else if (player.Value.Data.ControlType == PlayerData.ControllerType.Pad && _assignedJoypads == 1)
@@ -67,24 +70,25 @@ namespace Shooter.InputManagement {
                     _assignedJoypads++;
 
                     Debug.Log("Assigned pad 2.");
-
-
                 }
 
                 else
                 {
-                    Debug.LogError("Found A Player without a controller! Poor fella! Error. Error. Error.");
+                    Debug.LogError("Found A Player without a controller! Poor fella! Error. Error. Error. I am Error.");
                 }
             }
         }
 
+        #endregion
+
+        #region Unity
         private void Start ()
         {
             if (_players == null)
             {
                 Debug.LogError("Input Manager was not properly initialized. Errors are bound to come in the Update loop and"
                                 + "the game cannot be played.");
-                UnityEditor.EditorApplication.isPaused = true;
+
                 Application.Quit();
             }
         }
@@ -105,5 +109,7 @@ namespace Shooter.InputManagement {
                 }
             }
         }
+
+        #endregion
     }
 }
