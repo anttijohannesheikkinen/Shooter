@@ -30,8 +30,6 @@ namespace Shooter
                     unit.transform.rotation = Quaternion.identity;
                     unit.Init(playerData);
 
-                    Debug.Log(unit.transform.position);
-
                     Players.Add(playerData.Id, unit);
 
                     startPositionX += 5.0f;

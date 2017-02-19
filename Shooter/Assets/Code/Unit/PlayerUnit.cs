@@ -37,22 +37,5 @@ namespace Shooter
             gameObject.SetActive(false);
             base.Die();
         }
-
-        //protected void Update ()
-        //{
-        //    float inputHorizontal = Input.GetAxis("Horizontal");
-        //    float inputVertical = Input.GetAxis("Vertical");
-
-        //    Vector3 input = new Vector3(inputHorizontal, 0, inputVertical);
-
-        //    Mover.MoveToDirection(input);
-
-        //    bool shoot = Input.GetButton("Shoot");
-
-        //    if (shoot)
-        //    {
-        //        Weapons.Shoot(ProjectileLayer);
-        //    }
-        //}
     }
 }

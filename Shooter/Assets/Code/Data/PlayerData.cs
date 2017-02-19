@@ -31,7 +31,5 @@ namespace Shooter.Data
         public ControllerAxis HorizontalAxis;
         public ControllerAxis VerticalAxis;
         public ShootButton ShootBtn;
-
-        //TODO: ControllerType
     }
 }

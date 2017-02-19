@@ -7,21 +7,21 @@ namespace Shooter.Configs
     public enum ControllerAxis
     {
         HorizontalJoy1 = 0,
-        HorizontalJoy2,
-        HorizontalKey1,
-        HorizontalKey2,
-        VerticalJoy1,
-        VerticalJoy2,
-        VerticalKey1,
-        VerticalKey2
+        HorizontalJoy2 = 1,
+        HorizontalKey1 = 2,
+        HorizontalKey2 = 3,
+        VerticalJoy1 = 4,
+        VerticalJoy2 = 5,
+        VerticalKey1 = 6,
+        VerticalKey2 = 7
     }
 
     public enum ShootButton
     {
         ShootJoy1 = 0,
-        ShootJoy2,
-        ShootKey1,
-        ShootKey2
+        ShootJoy2 = 1,
+        ShootKey1 = 2,
+        ShootKey2 = 3
     }
 
     public static class Config

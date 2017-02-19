@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
 using Shooter.Data;
-using Shooter.Configs;
+using Shooter.InputManagement;
 
 namespace Shooter.Systems
 {
-    public class LevelManager : Shooter.Systems.SceneManager
+    public class LevelManager : SceneManager
     {
         // TODO: Add reference to InputManager here.
         public PlayerUnits PlayerUnits { get; private set; }
         public EnemyUnits EnemyUnits { get; private set; }
 
-        public InputManager.InputManager InputManager;
+        public InputManager InputManager;
 
         public override GameStateType StateType
         {
@@ -29,13 +29,13 @@ namespace Shooter.Systems
         {
             PlayerUnits = GetComponentInChildren<PlayerUnits>();
             EnemyUnits = GetComponentInChildren<EnemyUnits>();
-            InputManager = GameObject.FindObjectOfType<InputManager.InputManager>();
+            InputManager = FindObjectOfType<InputManager>();
 
             CheckForNulls();
             EnemyUnits.Init();
 
-            //Initialize InputManager with proper info of current player data.
-            //Tyhmä kierto tätä kautta IMO. Kai. Voisi tehdä järkevämminkin ehkä.
+            //Instantiate and Init players with proper data and then 
+            //initialize InputManager with proper info of current player data.
             PlayerData[] players = Global.Instance.GameManager.GetPlayers();
             PlayerUnits.Init(players);
             InputManager.Init(PlayerUnits);
