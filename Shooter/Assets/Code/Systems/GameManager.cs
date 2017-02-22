@@ -22,6 +22,7 @@ namespace Shooter.Systems
         MenuToInGame,
         InGameToMenu,
         InGameToGameOver,
+        InGameToInGame,
         GameOverToMenu
 
             //Ei kyllä tässä tapauksessa tarvii määritelläkään eksplisiittisesti, kun ei näitä tallenneta.

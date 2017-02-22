@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using Shooter.Data;
 using Shooter.InputManagement;
+using Shooter.Level;
+using Shooter.Systems.States;
 
 namespace Shooter.Systems
 {
@@ -9,6 +11,9 @@ namespace Shooter.Systems
         // TODO: Add reference to InputManager here.
         public PlayerUnits PlayerUnits { get; private set; }
         public EnemyUnits EnemyUnits { get; private set; }
+
+        private ConditionBase[] _conditions;
+
 
         public InputManager InputManager;
 
@@ -39,6 +44,31 @@ namespace Shooter.Systems
             PlayerData[] players = Global.Instance.GameManager.GetPlayers();
             PlayerUnits.Init(players);
             InputManager.Init(PlayerUnits);
+
+            _conditions = GetComponentsInChildren<ConditionBase>();
+            foreach (var condition in _conditions)
+            {
+                condition.Init(this);
+            }
+        }
+
+        public void ConditionMet(ConditionBase condition)
+        {
+            bool areConditionsMet = true;
+
+            foreach (ConditionBase c in _conditions)
+            {
+                if (!c.IsConditionMet)
+                {
+                    areConditionsMet = false;
+                    break;
+                }
+            }
+
+            if (areConditionsMet)
+            {
+                (AssociatedGameState as InGameState).LevelCompleted();
+            }
         }
 
         private void CheckForNulls()
