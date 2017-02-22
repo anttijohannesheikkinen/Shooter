@@ -101,6 +101,12 @@ namespace Shooter.InputManagement {
                                             0,
                                             Input.GetAxis(Config.ControllerAxisNames[player.Value.Data.VerticalAxis]));
 
+
+                if (IsDeadZone(new Vector2 (input.x, input.z)))
+                {
+                    input = Vector3.zero;
+                }
+
                 player.Value.Mover.MoveToDirection(input);
 
                 if (Input.GetButton(Config.ShootButtonNames[player.Value.Data.ShootBtn]))
@@ -111,5 +117,11 @@ namespace Shooter.InputManagement {
         }
 
         #endregion
+
+        private bool IsDeadZone (Vector2 input)
+        {
+
+            return input.magnitude < Config.DeadZone; 
+        }
     }
 }

@@ -16,6 +16,7 @@ namespace Shooter.Systems
             {
                 if (_instance == null)
                 {
+                    //_instance = Resources.Load<Global>();
                     GameObject globalObj = new GameObject(typeof(Global).Name);
                     _instance = globalObj.AddComponent<Global>();
                 }
