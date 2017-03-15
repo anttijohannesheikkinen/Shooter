@@ -9,16 +9,15 @@ namespace Shooter.Systems
     public class Global : MonoBehaviour
     {
         private static Global _instance;
+        private static bool _isAppClosing = false;
 
         public static Global Instance
         {
             get
             {
-                if (_instance == null)
+                if (_instance == null && !_isAppClosing)
                 {
-                    //_instance = Resources.Load<Global>();
-                    GameObject globalObj = new GameObject(typeof(Global).Name);
-                    _instance = globalObj.AddComponent<Global>();
+                    _instance = Instantiate(Resources.Load<Global>("Global"));
                 }
 
                 return _instance;
@@ -27,32 +26,17 @@ namespace Shooter.Systems
 
         [SerializeField]
         private Prefabs _prefabs;
-        public Prefabs Prefabs
-        {
-            get
-            {
-                return _prefabs;
-            }
-        }
-
         [SerializeField]
         private Pools _pools;
 
-        public Pools Pools
-        {
-            get
-            {
-                return _pools;
-            }
-        }
-
+        public Prefabs Prefabs { get { return _prefabs; } }
+        public Pools Pools { get { return _pools; } }
         public GameManager GameManager { get; private set; }
 
-        protected void Awake ()
+        protected void Awake()
         {
             if (_instance == null)
             {
-
                 // No instance set yet.
                 // Let this object be our one and only instance.
                 _instance = this;
@@ -60,13 +44,13 @@ namespace Shooter.Systems
 
             if (_instance == this)
             {
-                // This is the only instance, initialize it.
+                // This is the only allowed instance of the class.
+                // Run initializations.
                 Init();
             }
-
             else
             {
-                // Global is already instantiated. Destroy this instance.
+                // Global is already instantiated! Destroy this instance.
                 Destroy(this);
             }
         }
@@ -87,6 +71,11 @@ namespace Shooter.Systems
 
             GameManager = gameObject.GetOrAddComponent<GameManager>();
             GameManager.Init();
+        }
+
+        private void OnApplicationQuit()
+        {
+            _isAppClosing = true;
         }
     }
 }
