@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
 using Shooter.Configs;
+using Shooter.WaypointSystem;
+using Shooter.Utility;
 
 namespace Shooter
 {
     public class EnemyUnit : UnitBase
     {
+        [SerializeField] private Path _path;
+        private IPathUser _pathUser;
         public EnemyUnits EnemyUnits { get; private set; }
 
         public override int ProjectileLayer
@@ -26,7 +30,8 @@ namespace Shooter
         public void Init (EnemyUnits enemyUnits)
         {
             EnemyUnits = enemyUnits;
+            _pathUser = gameObject.GetOrAddComponent<PathUser>();
+            _pathUser.Init(Mover, _path);
         }
-
     }
 }
