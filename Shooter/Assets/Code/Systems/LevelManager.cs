@@ -43,7 +43,6 @@ namespace Shooter.Systems
             }
 
             CheckForNulls();
-            EnemyUnits.Init();
 
             //Instantiate and Init player units with proper data and then 
             //initialize InputManager with proper info of current player unit data.
