@@ -40,13 +40,17 @@ namespace Shooter.Systems
             foreach (var spawner in _enemySpawners)
             {
                 spawner.Init(EnemyUnits);
+
+                if (EnemyUnits == null) {
+                    Debug.Log("enemyunitsnull");
+                }
             }
 
             CheckForNulls();
 
             //Instantiate and Init player units with proper data and then 
             //initialize InputManager with proper info of current player unit data.
-            PlayerData[] players = Global.Instance.GameManager.GetPlayers();
+            PlayerData[] players = Global.Instance.CurrentGameData.PlayerDatas.ToArray();
             PlayerUnits.Init(players);
             InputManager.Init(PlayerUnits);
 

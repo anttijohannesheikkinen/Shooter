@@ -8,8 +8,6 @@ namespace Shooter.Level
     public class EnemySpawner : MonoBehaviour
     {
         [SerializeField]
-        private EnemyUnit _enemyPrefab;
-        [SerializeField]
         private float _spawnInterval = 1.0f;
         [SerializeField]
         private int _maxAmount;

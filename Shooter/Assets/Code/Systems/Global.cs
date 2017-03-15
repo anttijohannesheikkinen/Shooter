@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Shooter.Utility;
+using Shooter.Data;
+using Shooter.Systems.SaveLoad;
 
 namespace Shooter.Systems
 {
@@ -32,6 +34,9 @@ namespace Shooter.Systems
         public Prefabs Prefabs { get { return _prefabs; } }
         public Pools Pools { get { return _pools; } }
         public GameManager GameManager { get; private set; }
+        public GameData CurrentGameData { get; set; }
+
+        public SaveManager SaveManager { get; private set; }
 
         protected void Awake()
         {
@@ -68,6 +73,8 @@ namespace Shooter.Systems
             {
                 _pools = GetComponentInChildren<Pools>();
             }
+
+            SaveManager = new SaveManager(new BinaryFormatterSaveLoad<GameData>());
 
             GameManager = gameObject.GetOrAddComponent<GameManager>();
             GameManager.Init();

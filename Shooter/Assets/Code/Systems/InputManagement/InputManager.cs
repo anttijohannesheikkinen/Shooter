@@ -2,6 +2,8 @@
 using UnityEngine;
 using Shooter.Data;
 using Shooter.Configs;
+using Shooter.Systems;
+using System;
 
 namespace Shooter.InputManagement {
     public class InputManager : MonoBehaviour
@@ -120,6 +122,17 @@ namespace Shooter.InputManagement {
                 {
                     player.Value.Weapons.Shoot(player.Value.ProjectileLayer);
                 }
+            }
+
+            PollSave();
+        }
+
+        private void PollSave()
+        {
+            if (Input.GetKeyDown(KeyCode.F2))
+            {
+                Global.Instance.SaveManager.Save(Global.Instance.CurrentGameData, DateTime.Now.ToString("yyyy-mm-dd"));
+                Debug.Log("Tried to save");
             }
         }
 
