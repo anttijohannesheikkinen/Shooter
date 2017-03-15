@@ -74,8 +74,8 @@ namespace Shooter.Systems
                 _pools = GetComponentInChildren<Pools>();
             }
 
-            SaveManager = new SaveManager(new BinaryFormatterSaveLoad<GameData>());
-
+            //SaveManager = new SaveManager(new BinaryFormatterSaveLoad<GameData>());
+            SaveManager = new SaveManager(new JSONsaveLoad<GameData>());
             GameManager = gameObject.GetOrAddComponent<GameManager>();
             GameManager.Init();
         }
