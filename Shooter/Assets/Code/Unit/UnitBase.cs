@@ -17,10 +17,6 @@ namespace Shooter
         public delegate void HealthChangedDelegate(object sender, HealthChangedEventArgs args);
 
         #region Unity messages
-        protected virtual void Awake()
-        {
-            InitRequiredComponents();
-        }
 
         #endregion
 

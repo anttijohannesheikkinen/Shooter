@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+
 using UnityEngine;
 
 
@@ -9,6 +10,10 @@ namespace Shooter.Systems
 
         [SerializeField]
         private List<ProjectilePool> _projectilePools = new List<ProjectilePool>();
+        [SerializeField]
+        private AsteroidPool _asteroidPool;
+
+        public AsteroidPool AsteroidPool { get { return _asteroidPool; } }
 
         public ProjectilePool GetPool (Projectile.ProjectileType projectileType)
         {

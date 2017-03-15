@@ -8,12 +8,11 @@ namespace Shooter.Systems
 {
     public class LevelManager : SceneManager
     {
-        // TODO: Add reference to InputManager here.
         public PlayerUnits PlayerUnits { get; private set; }
         public EnemyUnits EnemyUnits { get; private set; }
 
         private ConditionBase[] _conditions;
-
+        private EnemySpawner[] _enemySpawners;
 
         public InputManager InputManager;
 
@@ -35,6 +34,13 @@ namespace Shooter.Systems
             PlayerUnits = GetComponentInChildren<PlayerUnits>();
             EnemyUnits = GetComponentInChildren<EnemyUnits>();
             InputManager = FindObjectOfType<InputManager>();
+
+            _enemySpawners = GetComponentsInChildren<EnemySpawner>();
+
+            foreach (var spawner in _enemySpawners)
+            {
+                spawner.Init(EnemyUnits);
+            }
 
             CheckForNulls();
             EnemyUnits.Init();

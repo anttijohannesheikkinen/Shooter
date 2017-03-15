@@ -19,7 +19,7 @@ namespace Shooter
             foreach (EnemyUnit enemy in enemies)
             {
                 _enemyUnits.Add(enemy);
-                enemy.Init(this);
+                enemy.Init(this, null);
             }
         }
 

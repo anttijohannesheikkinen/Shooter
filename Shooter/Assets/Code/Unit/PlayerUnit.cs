@@ -28,6 +28,7 @@ namespace Shooter
 
         public void Init  (PlayerData playerData)
         {
+            InitRequiredComponents();
             Data = playerData;
         }
 

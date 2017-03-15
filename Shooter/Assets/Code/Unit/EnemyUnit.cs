@@ -7,7 +7,7 @@ namespace Shooter
 {
     public class EnemyUnit : UnitBase
     {
-        [SerializeField] private Path _path;
+
         private IPathUser _pathUser;
         public EnemyUnits EnemyUnits { get; private set; }
 
@@ -27,11 +27,12 @@ namespace Shooter
             base.Die();
         }
 
-        public void Init (EnemyUnits enemyUnits)
+        public void Init (EnemyUnits enemyUnits, Path path)
         {
+            InitRequiredComponents();
             EnemyUnits = enemyUnits;
             _pathUser = gameObject.GetOrAddComponent<PathUser>();
-            _pathUser.Init(Mover, _path);
+            _pathUser.Init(Mover, path);
         }
     }
 }

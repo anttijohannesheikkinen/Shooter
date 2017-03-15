@@ -11,6 +11,7 @@ namespace Shooter.InputManagement {
 
         private Dictionary<PlayerData.PlayerId, PlayerUnit> _players;
         private int _assignedJoypads;
+        private bool _isInitialized;
 
         #endregion
 
@@ -26,6 +27,7 @@ namespace Shooter.InputManagement {
             }
 
             AssignControllers();
+            _isInitialized = true;
         }
 
         private void AssignControllers()
@@ -95,6 +97,11 @@ namespace Shooter.InputManagement {
 
         private void Update()
         {
+            if (!_isInitialized)
+            {
+                return;
+            }
+
             foreach (var player in _players)
             {
                 Vector3 input = new Vector3(Input.GetAxis(Config.ControllerAxisNames[player.Value.Data.HorizontalAxis]),

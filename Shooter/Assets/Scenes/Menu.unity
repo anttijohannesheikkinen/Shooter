@@ -288,8 +288,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccfade5071d106544af9eb75323af967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _loadIndicatorImage: {fileID: 1865316797}
-  _backGroundImage: {fileID: 841898489}
+  _indicatorImage: {fileID: 1865316797}
+  _backgroundImage: {fileID: 0}
 --- !u!1 &169770668
 GameObject:
   m_ObjectHideFlags: 0
