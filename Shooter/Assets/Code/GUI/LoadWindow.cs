@@ -22,6 +22,7 @@ namespace Shooter.GUI
             foreach (var saveName in saveNames)
             {
                 LoadItem loadItem = Instantiate(_loadItemPrefab, _contentParent.transform, true);
+                loadItem.Init(this, saveName);
             }
         }
 

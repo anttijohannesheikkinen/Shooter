@@ -2,17 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Shooter.Data;
+using Shooter.GUI;
 
 namespace Shooter.Systems
 {
     public class MenuManager : SceneManager
     {
+        private LoadWindow _loadWindow;
+
         public override GameStateType StateType
         {
             get
             {
                 return GameStateType.MenuState;
             }
+        }
+
+        private void Awake ()
+        {
+            _loadWindow = GetComponentInChildren<LoadWindow>(true);
+            _loadWindow.Init(this);
+            _loadWindow.Close();
         }
 
         public void StartGame()
@@ -34,9 +44,14 @@ namespace Shooter.Systems
         }
 
 
+        public void OpenLoadWindow ()
+        {
+            _loadWindow.Open();
+        }
+
         public void LoadGame(string loadFileName)
         {
-            // TODO: Close load window
+            _loadWindow.Close();
 
             GameData loadData = Global.Instance.SaveManager.Load(loadFileName);
             Global.Instance.CurrentGameData = loadData;

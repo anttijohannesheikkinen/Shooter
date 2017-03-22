@@ -4,6 +4,7 @@ using UnityEngine;
 using Shooter.Systems;
 using UnityEngine.UI;
 using DG.Tweening;
+using System;
 
 namespace Shooter.GUI
 {
@@ -15,11 +16,12 @@ namespace Shooter.GUI
         [SerializeField]
         private Image _backgroundImage;
 
+
         private Coroutine _rotateCoroutine;
         private Color _indicatorImageColor;
         private List<Tweener> _tweeners = new List<Tweener>();
 
-        protected void Awake()
+        public void Init()
         {
             gameObject.SetActive(false);
             Global.Instance.GameManager.GameStateChanging +=
