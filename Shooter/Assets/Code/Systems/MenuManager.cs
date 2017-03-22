@@ -9,6 +9,7 @@ namespace Shooter.Systems
     public class MenuManager : SceneManager
     {
         private LoadWindow _loadWindow;
+        private PlayerSettings _playerSettingsWindow;
 
         public override GameStateType StateType
         {
@@ -23,6 +24,9 @@ namespace Shooter.Systems
             _loadWindow = GetComponentInChildren<LoadWindow>(true);
             _loadWindow.Init(this);
             _loadWindow.Close();
+
+            _playerSettingsWindow = GetComponentInChildren<PlayerSettings>(true);
+            _playerSettingsWindow.Init(this);
         }
 
         public void StartGame()

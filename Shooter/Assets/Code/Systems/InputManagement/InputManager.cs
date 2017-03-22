@@ -14,8 +14,40 @@ namespace Shooter.InputManagement {
         private Dictionary<PlayerData.PlayerId, PlayerUnit> _players;
         private int _assignedJoypads;
         private bool _isInitialized;
-
+        private static readonly Dictionary<PlayerData.ControllerType, string> ControllerNames = new Dictionary<PlayerData.ControllerType, string>()
+        {
+            {PlayerData.ControllerType.KeyArrows, "Arrow Keys" },
+            {PlayerData.ControllerType.KeyWASD, "WASD Keys" },
+            {PlayerData.ControllerType.Pad, "Pad" }
+        };
         #endregion
+
+        public static string GetControllerName (PlayerData.ControllerType controllerType)
+        {
+            string result = null;
+
+            if (ControllerNames.ContainsKey(controllerType))
+            {
+                result = ControllerNames[controllerType];
+            }
+
+            return result;
+        }
+
+        public static PlayerData.ControllerType GetControllerTypeByName (string controllerName)
+        {
+            PlayerData.ControllerType result = PlayerData.ControllerType.None;
+
+            foreach (var kvp in ControllerNames)
+            {
+                if (kvp.Value == controllerName)
+                {
+                    result = kvp.Key;
+                }
+            }
+
+            return result;
+        }
 
         #region Initialization
         public void Init (PlayerUnits playerUnits)
