@@ -34,9 +34,13 @@ namespace Shooter.Systems
         }
 
 
-        public void LoadGame()
+        public void LoadGame(string loadFileName)
         {
-            Debug.Log("Load game");
+            // TODO: Close load window
+
+            GameData loadData = Global.Instance.SaveManager.Load(loadFileName);
+            Global.Instance.CurrentGameData = loadData;
+            Global.Instance.GameManager.PerformTransition(GameStateTransitionType.MenuToInGame);
         }
 
         public void QuitGame()

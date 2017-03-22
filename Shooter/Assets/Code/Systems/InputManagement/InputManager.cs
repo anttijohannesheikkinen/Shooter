@@ -32,6 +32,7 @@ namespace Shooter.InputManagement {
             _isInitialized = true;
         }
 
+
         private void AssignControllers()
         {
             foreach (var player in _players)
@@ -90,10 +91,8 @@ namespace Shooter.InputManagement {
         {
             if (_players == null)
             {
-                Debug.LogError("Input Manager was not properly initialized. Errors are bound to come in the Update loop and"
-                                + "the game cannot be played.");
-
-                Application.Quit();
+                _players = FindObjectOfType<LevelManager>().PlayerUnits.Players;
+                AssignControllers();
             }
         }
 

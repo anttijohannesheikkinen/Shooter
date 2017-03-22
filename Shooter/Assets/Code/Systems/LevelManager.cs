@@ -3,6 +3,7 @@ using Shooter.Data;
 using Shooter.InputManagement;
 using Shooter.Level;
 using Shooter.Systems.States;
+using System.Collections.Generic;
 
 namespace Shooter.Systems
 {
@@ -46,6 +47,39 @@ namespace Shooter.Systems
                 }
             }
 
+#if UNITY_EDITOR
+            if (Global.Instance.CurrentGameData == null)
+            {
+                Global.Instance.CurrentGameData = new GameData()
+                {
+                    Level = 1,
+                    PlayerDatas = new List<PlayerData>()
+                    {
+                    new PlayerData ()
+                    {
+                    Id = PlayerData.PlayerId.Player1,
+                    Lives = 3,
+                    ControlType = PlayerData.ControllerType.KeyArrows,
+                    UnitType = PlayerUnit.UnitType.Balanced
+                    },
+
+                    new PlayerData ()
+                    {
+                    Id = PlayerData.PlayerId.Player2,
+                    Lives = 3,
+                    ControlType = PlayerData.ControllerType.KeyWASD,
+                    UnitType = PlayerUnit.UnitType.Heavy
+                    }
+
+                    }
+
+                    
+                };
+            };
+
+#endif
+
+
             CheckForNulls();
 
             //Instantiate and Init player units with proper data and then 
@@ -61,7 +95,7 @@ namespace Shooter.Systems
             }
         }
 
-        public void ConditionMet(ConditionBase condition)
+    public void ConditionMet(ConditionBase condition)
         {
             bool areConditionsMet = true;
 
