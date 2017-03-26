@@ -39,6 +39,7 @@ namespace Shooter.Systems.States
 
         public void LevelCompleted ()
         {
+            Debug.Log("CurrentLevelIndex: " + CurrentLevelIndex);
             CurrentLevelIndex++;
             Global.Instance.GameManager.PerformTransition(GameStateTransitionType.InGameToInGame);
             //TODO: Don't do transition when a transition is already in progress.

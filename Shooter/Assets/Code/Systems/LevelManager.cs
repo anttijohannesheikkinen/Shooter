@@ -14,8 +14,11 @@ namespace Shooter.Systems
 
         private ConditionBase[] _conditions;
         private EnemySpawner[] _enemySpawners;
+        [SerializeField] private Transform[] _playerSpawnPoints;
 
-        public InputManager InputManager;
+        public Transform[] PlayerSpawnPoints { get { return _playerSpawnPoints; } private set { _playerSpawnPoints = value; } }
+
+        private InputManager InputManager;
 
         public override GameStateType StateType
         {
@@ -48,34 +51,47 @@ namespace Shooter.Systems
             }
 
 #if UNITY_EDITOR
-            if (Global.Instance.CurrentGameData == null)
+            if (Global.Instance.CurrentGameData == null || Global.Instance.devModePlayerData)
             {
                 Global.Instance.CurrentGameData = new GameData()
                 {
                     Level = 1,
                     PlayerDatas = new List<PlayerData>()
                     {
-                    new PlayerData ()
-                    {
-                    Id = PlayerData.PlayerId.Player1,
-                    Lives = 3,
-                    ControlType = PlayerData.ControllerType.KeyArrows,
-                    UnitType = PlayerUnit.UnitType.Balanced
-                    },
+                        new PlayerData ()
+                        {
+                            Id = PlayerData.PlayerId.Player1,
+                            Lives = 3,
+                            ControlType = PlayerData.ControllerType.KeyWASD,
+                            UnitType = PlayerUnit.UnitType.Fast
+                        },
 
-                    new PlayerData ()
-                    {
-                    Id = PlayerData.PlayerId.Player2,
-                    Lives = 3,
-                    ControlType = PlayerData.ControllerType.KeyWASD,
-                    UnitType = PlayerUnit.UnitType.Heavy
+                        new PlayerData ()
+                        {
+                            Id = PlayerData.PlayerId.Player2,
+                            Lives = 3,
+                            ControlType = PlayerData.ControllerType.KeyArrows,
+                            UnitType = PlayerUnit.UnitType.Heavy
+                        },
+
+                        new PlayerData ()
+                        {
+                            Id = PlayerData.PlayerId.Player3,
+                            Lives = 3,
+                            ControlType = PlayerData.ControllerType.Pad,
+                            UnitType = PlayerUnit.UnitType.Balanced
+                        },
+
+                        new PlayerData ()
+                        {
+                            Id = PlayerData.PlayerId.Player4,
+                            Lives = 3,
+                            ControlType = PlayerData.ControllerType.Pad,
+                            UnitType = PlayerUnit.UnitType.Balanced
+                        }
                     }
-
-                    }
-
-                    
                 };
-            };
+            }
 
 #endif
 

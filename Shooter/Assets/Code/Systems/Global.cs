@@ -10,6 +10,7 @@ namespace Shooter.Systems
 {
     public class Global : MonoBehaviour
     {
+        public bool devModePlayerData;
         private static Global _instance;
         private static bool _isAppClosing = false;
 

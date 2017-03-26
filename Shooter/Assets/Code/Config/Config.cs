@@ -56,5 +56,6 @@ namespace Shooter.Configs
         public const string EnemyProjectileLayername = "EnemyProjectile";
 
         public const float DeadZone = 0.3f;
+        public const int CollisionDamageToPlayer = 50;
     }
 }

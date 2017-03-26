@@ -12,6 +12,9 @@ namespace Shooter
         public IHealth Health { get; protected set; }
         public IMover Mover { get; protected set; }
         public WeaponController Weapons { get; protected set; }
+
+        protected int _originalHealth;
+
         #endregion
 
         public delegate void HealthChangedDelegate(object sender, HealthChangedEventArgs args);
@@ -40,6 +43,13 @@ namespace Shooter
             Health = gameObject.GetOrAddComponent<Health>();
             Mover = gameObject.GetOrAddComponent<Mover>();
             Weapons = GetComponentInChildren<WeaponController>();
+            Health.HealthChanged += HealthChanged;
+            _originalHealth = Health.CurrentHealth;
+        }
+
+        protected void RespawnWithMaxHealth ()
+        {
+            Health.CurrentHealth = _originalHealth;
             Health.HealthChanged += HealthChanged;
         }
 

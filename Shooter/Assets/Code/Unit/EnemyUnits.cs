@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Shooter.Systems;
 
 
 namespace Shooter
 {
+
     public class EnemyUnits : MonoBehaviour
     {
         public event Action<EnemyUnit> EnemyDestroyed;
@@ -15,12 +17,6 @@ namespace Shooter
         {
             // Findit raskaita, tässä tapauksessa kyllä ihan sama.
             EnemyUnit[] enemies = GameObject.FindObjectsOfType<EnemyUnit>();
-
-            foreach (EnemyUnit enemy in enemies)
-            {
-                _enemyUnits.Add(enemy);
-                enemy.Init(this, null);
-            }
         }
 
         public void EnemyDied(EnemyUnit enemyUnit)
@@ -28,6 +24,14 @@ namespace Shooter
             if (EnemyDestroyed != null)
             {
                 EnemyDestroyed(enemyUnit);
+            }
+
+            // If we had more enemies, there probably should be some sort of a cool system for returning objects to correct pools according to their type.
+            // So, this here is totally placeholder, but don't want to waste time right now to write a proper system that is probably going to be implemented
+            // differently someday, or totally left undone anyway.
+            if (enemyUnit.Type == EnemyUnit.EnemyType.Asteroid)
+            {
+                Global.Instance.Pools.AsteroidPool.ReturnObjectToPool(enemyUnit);
             }
         }
     }
