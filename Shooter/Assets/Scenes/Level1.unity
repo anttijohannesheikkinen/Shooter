@@ -693,7 +693,7 @@ GameObject:
   - component: {fileID: 1031085614}
   - component: {fileID: 1031085615}
   m_Layer: 0
-  m_Name: MillionEnemiesKilledCondition
+  m_Name: MillionAndOneEnemiesKilledCondition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -723,7 +723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9c5738328fa4df4981b9f1073c77fbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyCount: 1000000
+  _enemyCount: 1000001
 --- !u!1 &1033846316
 GameObject:
   m_ObjectHideFlags: 0
