@@ -35,9 +35,39 @@ namespace Shooter.Systems
             {
                 Level = 1,
                 PlayerDatas = new List<PlayerData>()
-                { new PlayerData()
-                    { Id = PlayerData.PlayerId.Player1, UnitType = PlayerUnit.UnitType.Heavy, Lives = 3, ControlType = PlayerData.ControllerType.KeyArrows},
-                    new PlayerData(){ Id = PlayerData.PlayerId.Player2, UnitType = PlayerUnit.UnitType.Balanced, Lives = 3, ControlType = PlayerData.ControllerType.KeyWASD}
+                {
+
+                        new PlayerData ()
+                        {
+                            Id = PlayerData.PlayerId.Player1,
+                            Lives = 3,
+                            ControlType = PlayerData.ControllerType.KeyWASD,
+                            UnitType = PlayerUnit.UnitType.Fast
+                        },
+
+                        new PlayerData ()
+                        {
+                            Id = PlayerData.PlayerId.Player2,
+                            Lives = 3,
+                            ControlType = PlayerData.ControllerType.KeyArrows,
+                            UnitType = PlayerUnit.UnitType.Heavy
+                        },
+
+                        new PlayerData ()
+                        {
+                            Id = PlayerData.PlayerId.Player3,
+                            Lives = 3,
+                            ControlType = PlayerData.ControllerType.Pad,
+                            UnitType = PlayerUnit.UnitType.Balanced
+                        },
+
+                        new PlayerData ()
+                        {
+                            Id = PlayerData.PlayerId.Player4,
+                            Lives = 3,
+                            ControlType = PlayerData.ControllerType.Pad,
+                            UnitType = PlayerUnit.UnitType.Balanced
+                        }
                 }
 
             };

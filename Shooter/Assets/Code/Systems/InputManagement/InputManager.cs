@@ -162,7 +162,7 @@ namespace Shooter.InputManagement {
         {
             if (Input.GetKeyDown(KeyCode.F2))
             {
-                Global.Instance.SaveManager.Save(Global.Instance.CurrentGameData, DateTime.Now.ToString("yyyy-mm-dd"));
+                Global.Instance.SaveManager.Save(Global.Instance.CurrentGameData, DateTime.Now.ToString("yyyy-MM-dd_hh-mm-ss"));
             }
         }
 
